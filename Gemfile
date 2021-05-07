@@ -35,5 +35,5 @@ end
 
 group :test do
   gem "webdrivers"
-  gem "capybara"
+  gem "capybara", "~> 2.13"
 end
