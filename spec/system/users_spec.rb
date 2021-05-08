@@ -36,4 +36,26 @@ RSpec.describe "Users", type: :system do
       end
     end
   end
+  describe "プロフィールページ" do
+    let(:user) { FactoryBot.create(:user) }
+    context "ページレイアウト" do
+      before do
+        visit user_path(user)
+      end
+ 
+      it "「プロフィール」の文字列が存在することを確認" do
+        expect(page).to have_content 'プロフィール'
+      end
+ 
+      it "正しいタイトルが表示されることを確認" do
+        expect(page).to have_title full_title('プロフィール')
+      end
+  
+      it "ユーザー情報が表示されることを確認" do
+        expect(page).to have_content user.name
+        expect(page).to have_content user.introduction
+        expect(page).to have_content user.sex
+      end
+    end
+  end
 end
