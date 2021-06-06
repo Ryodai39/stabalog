@@ -1,6 +1,37 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
+  let!(:user) { create(:user) }
+  let!(:admin_user) { create(:user, :admin) }
+
+  describe "ユーザー一覧ページ" do
+    context "管理者ユーザーの場合" do
+      it "ぺージネーション、自分以外のユーザーの削除ボタンが表示されること" do
+        create_list(:user, 30)
+        login_for_system(admin_user)
+        visit users_path
+        expect(page).to have_css "div.pagination"
+        User.paginate(page: 1).each do |u|
+          expect(page).to have_link u.name, href: user_path(u)
+          expect(page).to have_content "#{u.name} | 削除" unless u == admin_user
+        end
+      end
+    end
+
+    context "管理者ユーザーの場合" do
+      it "ぺージネーション、自分以外のユーザーの削除ボタンが表示されること" do
+        create_list(:user, 30)
+        login_for_system(admin_user)
+        visit users_path
+        expect(page).to have_css "div.pagination"
+        User.paginate(page: 1).each do |u|
+          expect(page).to have_link u.name, href: user_path(u)
+          expect(page).to have_content "#{u.name} | 削除" unless u == admin_user
+        end
+      end
+    end
+  end
+
   describe "ユーザー登録ページ" do
     before do
       visit signup_path
@@ -37,9 +68,9 @@ RSpec.describe "Users", type: :system do
       end
     end
   end
-  
+
   describe "プロフィール編集ページ" do
-  let(:user) { FactoryBot.create(:user) }
+  let!(:user) { create(:user) }
     before do
       login_for_system(user)
       visit user_path(user)
@@ -74,6 +105,7 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content 'メールアドレスは不正な値です'
       expect(user.reload.email).not_to eq ""
     end
+
   end
 
   describe "プロフィールページ" do
@@ -81,7 +113,6 @@ RSpec.describe "Users", type: :system do
 
     context "ページレイアウト" do
       before do
-        
         visit user_path(user)
       end
 
@@ -97,10 +128,6 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content user.name
         expect(page).to have_content user.introduction
         expect(page).to have_content user.sex
-      end
-      
-      it "プロフィール編集ページへのリンクが表示されていることを確認" do
-        expect(page).to have_link 'プロフィール編集', href: edit_user_path(user)
       end
     end
   end
