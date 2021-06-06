@@ -12,7 +12,8 @@ gem "devise"
 gem "bootstrap-sass"
 gem "faker"
 gem 'bcrypt', '3.1.13'
-gem 'jquery-rails', '4.3.1'
+gem 'will_paginate',           '3.1.7'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
