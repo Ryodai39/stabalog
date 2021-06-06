@@ -71,6 +71,7 @@ RSpec.describe "Users", type: :system do
 
   describe "プロフィール編集ページ" do
   let!(:user) { create(:user) }
+
     before do
       login_for_system(user)
       visit user_path(user)
@@ -105,7 +106,6 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content 'メールアドレスは不正な値です'
       expect(user.reload.email).not_to eq ""
     end
-
   end
 
   describe "プロフィールページ" do

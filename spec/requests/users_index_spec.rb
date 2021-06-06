@@ -12,7 +12,6 @@ RSpec.describe "ユーザー一覧ページ", type: :request do
     end
   end
 
-
   it "admin属性の変更が禁止されていること" do
     login_for_request(user)
     expect(user.admin).to be_falsey

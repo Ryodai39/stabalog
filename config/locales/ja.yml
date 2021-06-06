@@ -8,6 +8,9 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       user: ユーザー
+
+
+
     attributes:
       user:
         id: ID
@@ -19,6 +22,14 @@ ja:
         sex: 性別
         created_at: 登録日時
         updated_at: 更新日時
+      resipe:
+        id: ID
+        price: 値段(Tall)
+        name: レシピ名
+        drink: ベースドリンク
+        description: 説明
+        popularity: おすすめ度
+        user_id: 作成者のID
   date:
     abbr_day_names:
     - 日
