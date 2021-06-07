@@ -15,6 +15,22 @@ RSpec.describe "StaticPages", type: :system do
         expect(page).to have_title full_title
       end
     end
+
+    context "カスタムフィード", js: true do
+        let!(:user) { create(:user) }
+        let!(:recipe) { create(:recipe, user: user) }
+
+        it "カスタムのぺージネーションが表示されること" do
+          login_for_system(user)
+          create_list(:recipe, 6, user: user)
+          visit root_path
+          expect(page).to have_content "みんなのカスタム (#{user.recipes.count})"
+          expect(page).to have_css "div.pagination"
+          Recipe.take(5).each do |d|
+            expect(page).to have_link d.name
+          end
+        end
+    end
   end
 
   describe "ヘルプページ" do

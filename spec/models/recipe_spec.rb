@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  let!(:recipe_yesterday) { create(:recipe, :yesterday) }  # 追記
-  let!(:recipe_one_week_ago) { create(:recipe, :one_week_ago) }  # 追記
-  let!(:recipe_one_month_ago) { create(:recipe, :one_month_ago) } 
+  let!(:recipe_yesterday) { create(:recipe, :yesterday) } # 追記
+  let!(:recipe_one_week_ago) { create(:recipe, :one_week_ago) } # 追記
+  let!(:recipe_one_month_ago) { create(:recipe, :one_month_ago) }
   let!(:recipe) { create(:recipe) }
 
   context "バリデーション" do
@@ -47,11 +47,10 @@ RSpec.describe Recipe, type: :model do
       expect(recipe.errors[:popularity]).to include("は5以下の値にしてください")
     end
   end
-  
+
   context "並び順" do
     it "最も最近の投稿が最初の投稿になっていること" do
       expect(recipe).to eq Recipe.first
     end
   end
-  
 end

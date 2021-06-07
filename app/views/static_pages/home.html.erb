@@ -1,4 +1,11 @@
-<center>
-  <h1>スタバログへようこそ！</h1>
-  <h2>あなたのカスタム共有しませんか？</h2>
-</center>
+<% if logged_in? %>
+  <div class="container">
+    <h3>みんなのカスタム (<%= @feed_items.count %>)</h3>
+    <%= render 'shared/feed' %>
+  </div>
+<% else %>
+  <center>
+    <h1>スタバログへようこそ！</h1>
+    <h2>あなたのカスタム共有しませんか？</h2>
+  </center>
+<% end %>

@@ -8,7 +8,7 @@ FactoryBot.define do
     association :user
     created_at { Time.current }
   end
-    
+
   trait :yesterday do
     created_at { 1.day.ago }
   end

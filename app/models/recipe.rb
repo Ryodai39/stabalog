@@ -3,7 +3,7 @@ class Recipe < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :name, presence: true, length: { maximum: 30 }
-  validates :price, 
+  validates :price,
             :numericality => {
               :only_interger => true,
               :greater_than_or_equal_to => 1,
