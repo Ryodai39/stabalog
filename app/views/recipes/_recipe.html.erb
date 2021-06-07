@@ -1,0 +1,11 @@
+<li id="recipe-<%= recipe.id %>">
+  <%= link_to gravatar_for(recipe.user, size: 50), recipe.user %>
+  <span class="name"><%= link_to recipe.name, "#" %></span>
+  <span class="price">値段(Tall)：<%= recipe.price %>円</span>
+  <span class="description"><%= recipe.description %></span><br>
+  <span class="drink"><%= recipe.drink %></span>
+  <span class="popularity">人気度:<%= recipe.popularity %></span><br>
+  <span class="timestamp">
+    <%= time_ago_in_words(recipe.created_at) %>前に投稿
+  </span>
+</li>

@@ -13,3 +13,12 @@ User.create!(name:  "山田 太郎",
               password:              password,
               password_confirmation: password)
 end
+
+10.times do |n|
+  Recipe.create!(name: "test",
+               price: 630,
+               description: "冬に食べたくなる、身体が温まる料理です",
+               drink: "frapechino",
+               popularity: 5,
+               user_id: 1)
+end
