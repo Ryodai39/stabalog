@@ -23,7 +23,7 @@ ja:
       recipe:
         id: ID
         price: 値段(Tall)
-        name: レシピ名
+        name: カスタム名
         drink: ベースドリンク
         description: 説明
         popularity: おすすめ度

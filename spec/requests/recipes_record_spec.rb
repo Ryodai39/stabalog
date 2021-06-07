@@ -5,9 +5,11 @@ RSpec.describe "カスタム登録", type: :request do
   let!(:recipe) { create(:recipe, user: user) }
 
   context "ログインしているユーザーの場合" do
-    it "レスポンスが正常に表示されること" do
+    before do
       login_for_request(user)
       get new_recipe_path
+    end
+    it "レスポンスが正常に表示されること" do
       expect(response).to have_http_status "200"
       expect(response).to render_template('recipes/new')
     end
