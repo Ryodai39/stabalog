@@ -8,7 +8,8 @@ class Recipe < ApplicationRecord
               :only_interger => true,
               :greater_than_or_equal_to => 1,
               :less_than_or_equal_to => 3000
-            }
+            },
+            allow_nil: true
   validates :description, length: { maximum: 140 }
   validates :popularity,
             :numericality => {
