@@ -5,11 +5,15 @@ class RecipesController < ApplicationController
       @recipe = Recipe.new
     end
     
+    def show
+      @recipe = Recipe.find(params[:id])
+    end
+    
     def create
         @recipe = current_user.recipes.build(recipe_params)
         if @recipe.save
           flash[:success] = "カスタムが登録されました！"
-          redirect_to root_url
+          redirect_to recipe_path(@recipe)
         else
           render 'recipes/new'
         end

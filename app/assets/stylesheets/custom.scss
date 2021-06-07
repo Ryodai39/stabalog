@@ -198,12 +198,12 @@ span.picture {
   }
 }
 //// トップページ（ログイン後） ////
-// 「新しい料理を作る」ボタン
+// 「新しいカスタムを作る」ボタン
 
 .btn-record {
   margin-top: 3em;
 }
-//// 料理登録ページ ////
+//// カスタム登録ページ ////
 .input-need {
   color: red;
   font-size: 13px;
@@ -211,4 +211,46 @@ span.picture {
 
 .input-unneed {
   font-size: 13px;
+}
+
+//// カスタム詳細ページ ////
+.recipe-user-name {
+  display: inline-block;
+}
+
+h2.recipe-name {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.recipe-price{
+  margin-top: 30px;
+}
+
+.recipe-drink{
+  margin-top: 30px;
+}
+
+
+.show-recipe-other-info {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.recipe-other-info {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.recipe-info {
+  h5 {
+    font-size: 16px;
+    display: inline-block;
+  }
+  h4 {
+    font-size: 20px;
+    display: inline-block;
+  }
 }

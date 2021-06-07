@@ -1,0 +1,14 @@
+<% provide(:title, "#{@recipe.name}") %>
+<div class="container">
+  <div class="row">
+    <h2 class="recipe-name"><%= @recipe.name %></h2>
+    <h4 class="recipe-price"><%= @recipe.price %></h4>
+    <h4><%= @recipe.description %></h4>
+    <h4 class="recipe-drink"><%= @recipe.drink %></h4>
+    <div class="show-recipe-other-info">
+      <div class="recipe-info">
+        <h5>おすすめ度：</h5><h4><%= @recipe.popularity %></h4>
+      </div>
+    </div>
+  </div>
+</div>
