@@ -71,6 +71,7 @@ RSpec.describe "Users", type: :system do
 
   describe "プロフィール編集ページ" do
   let!(:user) { create(:user) }
+
     before do
       login_for_system(user)
       visit user_path(user)
@@ -105,7 +106,6 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content 'メールアドレスは不正な値です'
       expect(user.reload.email).not_to eq ""
     end
-
   end
 
   describe "プロフィールページ" do
@@ -113,6 +113,8 @@ RSpec.describe "Users", type: :system do
 
     context "ページレイアウト" do
       before do
+        login_for_system(user)
+        create_list(:recipe, 10, user: user)
         visit user_path(user)
       end
 
@@ -128,6 +130,23 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content user.name
         expect(page).to have_content user.introduction
         expect(page).to have_content user.sex
+      end
+      it "レシピの件数が表示されていることを確認" do
+        expect(page).to have_content "レシピ (#{user.recipes.count})"
+      end
+
+      it "レシピの情報が表示されていることを確認" do
+        Recipe.take(5).each do |recipe|
+          expect(page).to have_link recipe.name
+          expect(page).to have_content recipe.price
+          expect(page).to have_content recipe.description
+          expect(page).to have_content recipe.drink
+          expect(page).to have_content recipe.popularity
+        end
+      end
+
+      it "レシピのページネーションが表示されていることを確認" do
+        expect(page).to have_css "div.pagination"
       end
     end
   end

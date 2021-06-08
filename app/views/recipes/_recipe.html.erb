@@ -1,0 +1,14 @@
+<li id="recipe-<%= recipe.id %>">
+  <%= link_to gravatar_for(recipe.user, size: 50), recipe.user %>
+  <span class="name"><%= link_to recipe.name, recipe_path(recipe) %></span>
+  <span class="price">値段(Tall)：<%= recipe.price %>円</span>
+  <span class="description"><%= recipe.description %></span><br>
+  <span class="drink"><%= recipe.drink %></span>
+  <span class="popularity">おすすめ度:<%= recipe.popularity %></span><br>
+  <span class="timestamp">
+    <%= time_ago_in_words(recipe.created_at) %>前に投稿
+  </span>
+  <% if current_user.admin? || (current_user == recipe.user) %>
+    <%= link_to "削除", recipe_path(recipe), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+  <% end %>
+</li>

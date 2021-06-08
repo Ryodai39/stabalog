@@ -1,4 +1,14 @@
-<center>
-  <h1>スタバログへようこそ！</h1>
-  <h2>あなたのカスタム共有しませんか？</h2>
-</center>
+<% if logged_in? %>
+  <div class="container">
+    <h3>みんなのカスタム (<%= @feed_items.count %>)</h3>
+    <%= render 'shared/feed' %>
+  </div>
+  <div class="col-md-3">
+    <p><%= link_to "新しいカスタムを作る", new_recipe_path, class: "btn btn-primary btn-lg btn-record" %></p>
+  </div>
+<% else %>
+  <center>
+    <h1>スタバログへようこそ！</h1>
+    <h2>あなたのカスタム共有しませんか？</h2>
+  </center>
+<% end %>

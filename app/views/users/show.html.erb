@@ -17,4 +17,16 @@
       <% end %>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-9">
+      <% if @user.recipes.any? %>
+        <h3>レシピ (<%= @user.recipes.count %>)</h3>
+        <ol class="recipes">
+          <%= render @recipes %>
+        </ol>
+        <%= will_paginate @recipes %>
+      <% end %>
+    </div>
+  </div>
+
 </div>

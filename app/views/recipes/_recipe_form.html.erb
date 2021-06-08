@@ -1,0 +1,24 @@
+<%= form_with model: @recipe, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class = 'form-group'>
+    <%= f.label :name %>　<span class="input-need">※必須</span>
+    <%= f.text_field :name, class: 'form-control', id: 'recipe_name' %>
+  </div>
+　<div class = 'form-group'>
+    <%= f.label :price %> [円]　<span class="input-unneed">※任意</span>
+    <%= f.text_field :price, class: 'form-control', id: 'recipe_price' %>
+  </div>
+  <div class = 'form-group'>
+    <%= f.label :description %>　<span class="input-unneed">※任意</span>
+    <%= f.text_field :description, size: "60x4", class: 'form-control', id: 'recipe_description' %>
+  </div>
+  <div class = 'form-group'>
+    <%= f.label :drink %> <span class="input-unneed">※任意</span>
+    <%= f.text_field :drink, class: 'form-control', id: 'recipe_price' %>
+  </div>
+  <div class = 'form-group'>
+    <%= f.label :popularity %> [1~5]　<span class="input-unneed">※任意</span>
+    <%= f.text_field :popularity, class: 'form-control', id: 'recipe_popularity' %>
+  </div>
+  <%= f.submit nil, class: 'btn btn-primary' %>
+<% end %>
