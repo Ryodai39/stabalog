@@ -2,6 +2,11 @@
 <div class="container">
   <div class="row">
     <h2 class="recipe-name"><%= @recipe.name %></h2>
+    <div class="change-recipe">
+      <% if current_user == @recipe.user %>
+        <%= link_to "カスタムを編集", edit_recipe_path(@recipe), class: 'edit-recipe' %>　
+      <% end %>
+    </div>
     <h4 class="recipe-price"><%= @recipe.price %></h4>
     <h4><%= @recipe.description %></h4>
     <h4 class="recipe-drink"><%= @recipe.drink %></h4>
