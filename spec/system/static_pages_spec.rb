@@ -19,10 +19,11 @@ RSpec.describe "StaticPages", type: :system do
     context "カスタムフィード", js: true do
         let!(:user) { create(:user) }
         let!(:recipe) { create(:recipe, user: user) }
+
         before do
           login_for_system(user)
         end
-        
+
         it "カスタムのぺージネーションが表示されること" do
           login_for_system(user)
           create_list(:recipe, 6, user: user)
@@ -33,11 +34,11 @@ RSpec.describe "StaticPages", type: :system do
             expect(page).to have_link d.name
           end
         end
-        
+
         it "「新しいカスタムを作る」リンクが表示されること" do
          visit root_path
          expect(page).to have_link "新しいカスタムを作る", href: new_recipe_path
-       end
+        end
     end
   end
 

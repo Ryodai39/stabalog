@@ -28,7 +28,7 @@ RSpec.describe "recipes", type: :system do
       end
     end
   end
-  
+
   describe "カスタム詳細ページ" do
     context "ページレイアウト" do
       before do

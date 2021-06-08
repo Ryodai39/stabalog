@@ -6,6 +6,9 @@
       <% if current_user == @recipe.user %>
         <%= link_to "カスタムを編集", edit_recipe_path(@recipe), class: 'edit-recipe' %>　
       <% end %>
+      <% if current_user.admin? || (current_user == @recipe.user) %>
+      　<%= link_to "削除", recipe_path(@recipe), method: :delete, class: 'delete-recipe', data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
     </div>
     <h4 class="recipe-price"><%= @recipe.price %></h4>
     <h4><%= @recipe.description %></h4>
