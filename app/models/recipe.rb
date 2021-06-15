@@ -19,4 +19,13 @@ class Recipe < ApplicationRecord
               :less_than_or_equal_to => 5
             },
             allow_nil: true
+  validate :picture_size
+  
+  private
+  
+    def picture_size
+      if picture_size > 5.megabytes
+        errors.add(:picture, "5MBより大きい画像はアップロードできません。")
+      end
+    
 end
