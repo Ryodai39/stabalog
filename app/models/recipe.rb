@@ -27,5 +27,5 @@ class Recipe < ApplicationRecord
       if picture_size > 5.megabytes
         errors.add(:picture, "5MBより大きい画像はアップロードできません。")
       end
-    
+    end
 end
