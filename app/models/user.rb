@@ -2,7 +2,8 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :active_relatonships, class_name: "Relationship",
                                  foreign_key: "follower_id",
-                                 deoendent: :destroy
+                                 dependent: :destroy
+  has_many :following, through: :active_relationships,  source: :followed
   attr_accessor :remember_token
   before_save :downcase_email
   validates :name, presence: true, length: { maximum: 50 }
@@ -41,6 +42,18 @@ class User < ApplicationRecord
 
   def feed
     Recipe.where("user_id = ?", id)
+  end
+  
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
   end
 
   private

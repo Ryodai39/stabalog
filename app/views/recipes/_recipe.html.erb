@@ -1,9 +1,6 @@
 <li id="recipe-<%= recipe.id %>">
   <%= link_to gravatar_for(recipe.user, size: 50), recipe.user %>
   <span class="name"><%= link_to recipe.name, recipe_path(recipe) %></span>
-  <span>
-    <%= link_to((image_tag recipe.picture.url), recipe_path(recipe.id), class: 'recipe-picture') if recipe.picture.url.present? %>
-  </span>
   <span class="price">値段(Tall)：<%= recipe.price %>円</span>
   <span class="description"><%= recipe.description %></span><br>
   <span class="drink"><%= recipe.drink %></span>
