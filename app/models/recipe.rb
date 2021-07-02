@@ -18,7 +18,6 @@ class Recipe < ApplicationRecord
               :less_than_or_equal_to => 5
             },
             allow_nil: true
-  
+
   private
-  
 end

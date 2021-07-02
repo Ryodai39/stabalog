@@ -9,6 +9,7 @@ RSpec.describe "カスタム登録", type: :request do
       get new_recipe_path
       login_for_request(user)
     end
+
     context "フレンドリーフォワーディング" do
      it "レスポンスが正常に表示されること" do
       expect(response).to redirect_to new_recipe_url

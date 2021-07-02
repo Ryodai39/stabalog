@@ -34,11 +34,6 @@ RSpec.describe "StaticPages", type: :system do
             expect(page).to have_link d.name
           end
         end
-
-        it "「新しいカスタムを作る」リンクが表示されること" do
-         visit root_path
-         expect(page).to have_link "新しいカスタムを作る", href: new_recipe_path
-        end
     end
   end
 
@@ -47,7 +42,7 @@ RSpec.describe "StaticPages", type: :system do
       visit about_path
     end
 
-    it "クックログとは？の文字列が存在することを確認" do
+    it "スタバログとは？の文字列が存在することを確認" do
       expect(page).to have_content 'スタバログとは？'
     end
 
